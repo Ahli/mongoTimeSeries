@@ -55,6 +55,7 @@ class QueryTests {
 
     @Test
     void testFindInterval() {
+        // find all device 1's data points of a single day
         MetaData metaData = new MetaData("device_1", "hoursOnline");
         Instant startGE = Instant.parse("2022-11-02T00:00:00.00Z");
         Instant endLT = Instant.parse("2022-11-03T00:00:00.00Z");
@@ -75,10 +76,11 @@ class QueryTests {
 
     @Test
     void testGetBucket() {
+        // calc average and last value of two days
         MetaData metaData = new MetaData("device_1", "hoursOnline");
-        Instant startGE = Instant.parse("2022-11-02T18:00:00.00Z");
-        Instant mid     = Instant.parse("2022-11-03T06:00:00.00Z");
-        Instant endLT   = Instant.parse("2022-11-03T18:00:00.00Z");
+        Instant startGE = Instant.parse("2022-11-01T00:00:00.00Z");
+        Instant mid     = Instant.parse("2022-11-02T00:00:00.00Z");
+        Instant endLT   = Instant.parse("2022-11-03T00:00:00.00Z");
         List<Instant> boundaries = List.of(startGE, mid, endLT);
         List<BucketDataDto> buckets =
                 measurementRepository.findBuckets(metaData, startGE, endLT, boundaries);
@@ -86,12 +88,12 @@ class QueryTests {
         assertThat(buckets).hasSize(2);
 
         assertThat(buckets.get(0).startDate()).isEqualTo(startGE);
-        assertThat(buckets.get(0).average()).isEqualTo(981.5);
-        assertThat(buckets.get(0).last()).isEqualTo(987);
+        assertThat(buckets.get(0).average()).isEqualTo(945.5);
+        assertThat(buckets.get(0).last()).isEqualTo(957);
 
         assertThat(buckets.get(1).startDate()).isEqualTo(mid);
-        assertThat(buckets.get(1).average()).isEqualTo(993.5);
-        assertThat(buckets.get(1).last()).isEqualTo(999);
+        assertThat(buckets.get(1).average()).isEqualTo(969.5);
+        assertThat(buckets.get(1).last()).isEqualTo(981);
     }
 
 }
