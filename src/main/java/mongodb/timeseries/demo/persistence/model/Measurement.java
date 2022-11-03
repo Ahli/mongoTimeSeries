@@ -15,9 +15,9 @@ import java.time.Instant;
 @RequiredArgsConstructor
 @TimeSeries(collection = "measurements",
             timeField = "timestamp", metaField = "metaData",
-            granularity = Granularity.MINUTES)
+            granularity = Granularity.HOURS)
 public class Measurement {
-	
+
 	@Id
 	private String id;
 	

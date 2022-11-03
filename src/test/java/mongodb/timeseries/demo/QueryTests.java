@@ -65,6 +65,13 @@ class QueryTests {
         assertThat(foundInInterval).hasSize(24);
     }
 
+
+
+
+
+
+
+
     @Test
     void testFindLast() {
         MetaData metaData = new MetaData("device_1", "hoursOnline");
@@ -73,6 +80,16 @@ class QueryTests {
         assertThat(last.getValue()).isEqualTo(1000);
         assertThat(last.getTimestamp()).isEqualTo(Instant.parse("2022-11-03T18:00:00.00Z"));
     }
+
+
+
+
+
+
+
+
+
+
 
     @Test
     void testGetBucket() {
