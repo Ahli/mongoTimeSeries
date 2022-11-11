@@ -6,4 +6,4 @@ Java 17 is used.
 
 Slides: https://slides.com/ahli/introduction-to-mongodb-time-series/fullscreen/
 
-Talk: https://www.youtube.com/watch?v=Ll8LYNLIZeo&t=476s
+Talk: https://www.youtube.com/watch?v=B2MadpsQsbE
